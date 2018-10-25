@@ -16,7 +16,7 @@ render() {
         <img src={img} alt=''/>
         <p>mortgage {mortgage} rent {rent}</p>
         <p>State {state} Zip Code {zip} </p>
-        <button>Delete</button>
+        <button onClick={() => this.props.deleteHouse()}>Delete</button>
 
 
     </div>

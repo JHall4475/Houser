@@ -26,7 +26,13 @@ getHouses = () => {
     })
 }
 
-
+deleteHouse = (id) => {
+    console.log(id)
+    axios.delete(`http://localhost:8080/api/house/${id}`)
+    .then((response) => {
+        console.log(response.data)
+    })
+}
 
 
 
@@ -34,11 +40,12 @@ render() {
     return(
     <div>
         <p>Dashboard</p>
-        <button onClick={() => this.goToWizard('../wizard')}>Add New Property</button>
+        <button onClick={() => this.goToWizard('../wizard/step1')}>Add New Property</button>
        {this.state.houses.map(house => {
            return(
                <div>
                 <House
+                    
                     name={house.name}
                     address={house.address}
                     city={house.city}
@@ -47,6 +54,7 @@ render() {
                     rent={house.rent}
                     state={house.state}
                     zip={house.zip}
+                    deleteHouse={() => this.deleteHouse(house.id)}
                />
                
                </div>

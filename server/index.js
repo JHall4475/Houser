@@ -24,7 +24,11 @@ app.get('/health', (req, res) => {
     return res.send('ok')
 });
 
-app.get('/api/houses', controller.getHouses)
+app.get('/api/houses', controller.getHouses);
+
+app.post('/api/house', controller.newHouse);
+
+app.delete('/api/house/:id', controller.deleteHouse)
 
 app.listen(port, function() {
     console.log(`Server is running on ${port}`)

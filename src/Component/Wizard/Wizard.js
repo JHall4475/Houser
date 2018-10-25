@@ -1,37 +1,61 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import StepOne from '../Steps/StepOne'
+import StepTwo from '../Steps/StepTwo'
+import StepThree from '../Steps/StepThree'
+
 
 
 
 class Wizard extends Component {
 
-state = {
-     name:'',
-     address:'',
-     city:'',
-     state:'',
-     zip: 0   
-    }
 
-onInputChangePropName = (e) => {
-        this.setState({name: e.target.value})
-    }
-onInputChangeAddress = (e) => {
-        this.setState({address: e.target.value})
-    }
-onInputChangeCity = (e) => {
-        this.setState({city: e.target.value})
-    }
-onInputChangeState = (e) => {
-        this.setState({state: e.target.value})
-    }
-onInputChangeZip = (e) => {
-        this.setState({zip: e.target.value})
-    }
+
+
+// state = {
+//      name:'',
+//      address:'',
+//      city:'',
+//      state:'',
+//      zip: 0   
+//     }
+
+// onInputChangePropName = (e) => {
+//         this.setState({name: e.target.value})
+//     }
+// onInputChangeAddress = (e) => {
+//         this.setState({address: e.target.value})
+//     }
+// onInputChangeCity = (e) => {
+//         this.setState({city: e.target.value})
+//     }
+// onInputChangeState = (e) => {
+//         this.setState({state: e.target.value})
+//     }
+// onInputChangeZip = (e) => {
+//         this.setState({zip: e.target.value})
+//     }
     
-    goBack(path) {
+goBack(path) {
         this.props.history.push(path);
     }
+
+// postNewHouse = () => {
+//     axios.post('http://localhost:8080/api/house', { 
+    
+//         name: this.state.name,
+//         address: this.state.address,
+//         city: this.state.city,
+//         state:this.state.state,
+//         zip:this.state.zip,
+//     })
+//     .then((response) => {
+//         console.log(response.data)
+//         this.goBack('../')
+//     })
+//  }
+
+
 
 
 
@@ -40,6 +64,16 @@ render() {
     <div>(Wizard)
         <h1>Add New Listing</h1>
         <button onClick={() => this.goBack('../')}>Cancel</button>
+        
+        <Route path="/wizard/step1" component={StepOne}/>
+        <Route path="/wizard/step2" component={StepTwo} />
+        <Route path="/wizard/step3" component={StepThree}/>
+        
+        
+        
+        
+        
+        {/* <br></br>
         <input
             onChange={this.onInputChangePropName}
             value={this.state.name}
@@ -76,7 +110,9 @@ render() {
             type="text"
             placeholder="Zip"
         ></input>
-
+        <br></br>
+        <button onClick={() => this.postNewHouse()}>Complete</button>
+ */}
 
     </div>
     )
